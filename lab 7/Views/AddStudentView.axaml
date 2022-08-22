@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="189"
+		 Width="400" Height="189"
+        x:Class="lab_7.Views.AddStudentView"
+        Title="AddStudentView">
+	<StackPanel>
+		<TextBox Name="SurnameBox" Text="{Binding SurnameText}" Watermark="Введите фамилию" />
+		<TextBox Name="NameBox" Text="{Binding NameText}" Watermark="Введите имя" />
+		<TextBox Name="PatronymicBox" Text="{Binding PatronymicText}" Watermark="Введите отчество" />
+		<TextBox Name="GradeBox" Text="{Binding GradeText}" Watermark="Введите оценку" />
+		<Button Name="OK">OK</Button>
+		<Button Name="Cancel">Cancel</Button>
+		</StackPanel>
+</Window>

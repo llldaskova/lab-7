@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:lab_7.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:model="using:lab_7.ViewModels.MainWindowViewModel"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="459"
+		Width="450" Height="459"
+        x:Class="lab_7.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="lab_7">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+<DockPanel>
+	<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+		<MenuItem Header="File">
+			<MenuItem  Header="Load" Click="MenuLoadClick"/>
+				<MenuItem  Header="Save" Click="MenuSaveClick"/>
+		            <MenuItem Header="Exit" Click="MenuExitClick"/>
+				</MenuItem>
+	<MenuItem Header="About" Click="MenuAboutClick"/>
+</Menu>
+<DataGrid Name="DataGrid" Height="390"  Width="450" DockPanel.Dock="Top" SelectionMode="Extended"  AutoGenerateColumns="False" Items="{Binding Item}">
+	<DataGrid.Columns>
+		<DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/> 
+		<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/> 
+		<DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"/>
+
+		<DataGridTemplateColumn  Header="КС">
+			<DataGridTemplateColumn.CellTemplate>
+				<DataTemplate  >
+					<TextBlock Background="{Binding MyBrush}"  Text="{Binding Grade}"
+					VerticalAlignment="Center" HorizontalAlignment="Center" />
+				</DataTemplate>
+			</DataGridTemplateColumn.CellTemplate>
+			<DataGridTemplateColumn.CellEditingTemplate>
+				<DataTemplate >
+					<TextBox Text="{Binding Grade}" VerticalAlignment="Center"
+					HorizontalAlignment="Center" />
+				</DataTemplate>
+			</DataGridTemplateColumn.CellEditingTemplate>
+		</DataGridTemplateColumn>
+
+
+
+
+
+		
+		<DataGridCheckBoxColumn Binding="{Binding State}" />
+	</DataGrid.Columns>
+</DataGrid>
+
+	<Button Click="AddStudentButton">Добавить студента</Button>
+	<Button  Command="{Binding RemoveStudentButton}" >Удалить всех выбранных студентов</Button>
+</DockPanel>
+</Window>
